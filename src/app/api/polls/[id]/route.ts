@@ -1,0 +1,24 @@
+import { NextResponse } from "next/server";
+import { getPollById } from "@/lib/data";
+
+interface RouteParams {
+  params: Promise<{ id: string }>;
+}
+
+// STAP 3: GET /api/polls/[id] — enkele poll ophalen
+//
+// Wat moet je doen?
+// 1. Haal het id op uit params (let op: params is een Promise!)
+// 2. Zoek de poll met getPollById(id)
+// 3. Als de poll niet bestaat, return een 404 JSON response
+// 4. Als de poll wel bestaat, return de poll als JSON
+//
+// Hint: kijk naar /api/polls/route.ts voor een voorbeeld van NextResponse.json()
+
+export async function GET(
+  request: Request,
+  { params }: RouteParams
+): Promise<NextResponse> {
+  // Jouw code hier...
+  return NextResponse.json({ error: "Nog niet geimplementeerd" }, { status: 501 });
+}
