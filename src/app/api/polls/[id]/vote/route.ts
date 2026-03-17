@@ -23,6 +23,18 @@ export async function POST(
   request: Request,
   { params }: RouteParams
 ): Promise<NextResponse> {
-  // Jouw code hier...
-  return NextResponse.json({ error: "Nog niet geimplementeerd" }, { status: 501 });
+  const resolvedParams = await params;
+  const id = resolvedParams.id;
+  const body: VoteBody = await request.json();
+  if (typeof body.optionIndex !== "number") {
+    return NextResponse.json(
+    { error: "optionIndex is verplicht" },
+    { status: 400 }
+    );
+    }
+    const poll = votePoll(id, body.optionIndex);
+    if(!poll){
+      return NextResponse.json({error: "Poll of optie niet gevonden"}, {status: 404});
+    }
+    return NextResponse.json(poll);
 }
