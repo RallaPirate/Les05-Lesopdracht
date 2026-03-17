@@ -19,6 +19,17 @@ export async function GET(
   request: Request,
   { params }: RouteParams
 ): Promise<NextResponse> {
-  // Jouw code hier...
-  return NextResponse.json({ error: "Nog niet geimplementeerd" }, { status: 501 });
+  const { id } = await params;
+  
+  const poll=getPollById(id);
+
+  if(poll){
+    return NextResponse.json(poll);
+  }
+  else {
+    return NextResponse.json(
+      { error: "Poll niet gevonden" },
+      { status: 404 }
+      );
+  }
 }
