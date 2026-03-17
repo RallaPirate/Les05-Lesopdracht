@@ -22,7 +22,7 @@ export default function HomePage() {
     <div className="text-sm text-gray-500">
     {poll.options.length} opties · {totalVotes(poll)} stemmen
     </div>
-    { poll.options.map((option, index) => (<span key = {index} className="bg-gray-50 rounded-xl px-4">{option}</span>))}
+    { poll.options.map((option, index) => (<span key = {index} className="bg-gray-50 rounded-xl p-4">{option}</span>))}
     </Link>
     ))}
     </section>
